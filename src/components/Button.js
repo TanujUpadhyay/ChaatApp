@@ -1,6 +1,13 @@
 import React from "react";
-import { TouchableOpacity, StyleSheet, Text, View } from "react-native";
+import {
+  TouchableOpacity,
+  StyleSheet,
+  Text,
+  View,
+  ActivityIndicator,
+} from "react-native";
 import Color from "../util/Colors";
+import { color } from "react-native-reanimated";
 
 const CustomButton = (props) => {
   const {
@@ -8,15 +15,24 @@ const CustomButton = (props) => {
     styleDeafault = {},
     textstyleDefalt = {},
     onPress,
+    isLoading,
   } = props;
-  return (
-    <TouchableOpacity
-      onPress={onPress}
-      style={[styles.buttonStyle, styleDeafault]}
-    >
-      <Text style={[styles.textStyle, textstyleDefalt]}>{title}</Text>
-    </TouchableOpacity>
-  );
+
+  const loader = () => {
+    return (
+      <ActivityIndicator style={styles.buttonStyle} animating={isLoading} />
+    );
+  };
+
+  const button = () => {
+    return (
+      <TouchableOpacity onPress={onPress} style={styles.buttonStyle}>
+        <Text style={styles.textStyle}>{title}</Text>
+      </TouchableOpacity>
+    );
+  };
+
+  return <View style={[styleDeafault]}>{isLoading ? loader() : button()}</View>;
 };
 
 const styles = StyleSheet.create({

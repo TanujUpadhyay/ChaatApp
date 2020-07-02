@@ -17,15 +17,17 @@ import Constants from "../const/Constants";
 import DismissKeyboard from "../components/DismissKeyboard";
 import Utility from "../util/Utility";
 import Color from "../util/Colors";
+import firebase from "../firebase/Firebase";
+import { auth } from "firebase";
 
 const SigninScreen = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
   const [PasswordError, setPasswordError] = useState("");
-  const [isLoading, setIsloading] = useState("");
+  const [isLoading, setIsloading] = useState(false);
 
-  validateEmail = () => {
+  const validateEmail = () => {
     const isValidEmail = Utility.isEmailVaild(email);
     isValidEmail
       ? setEmailError("")
@@ -33,12 +35,52 @@ const SigninScreen = () => {
     return isValidEmail;
   };
 
-  validatePassword = () => {
+  const validatePassword = () => {
     const isValidPassword = Utility.isvALIDfIELD(password);
     isValidPassword
       ? setPasswordError("")
       : setPasswordError(Strings.PasswordFieldEmpty);
     return isValidPassword;
+  };
+
+  const perFromAuth = () => {
+    const isValidEmail = validateEmail();
+    const isValipassword = validatePassword();
+    if (isValidEmail && isValipassword) {
+      setEmailError("");
+      setPasswordError("");
+      registration(email, password);
+    }
+  };
+
+  const registration = (email, password) => {
+    try {
+      setIsloading(true);
+      firebase
+        .auth()
+        .signInWithEmailAndPassword(email, password)
+        .then((user) => {
+          setIsloading(false);
+          Alert.alert("Logged In");
+        })
+        .catch((err) => {
+          firebase
+            .auth()
+            .createUserWithEmailAndPassword(email, password)
+            .then((user) => {
+              setIsloading(false);
+              Alert.alert("Create a New Coder");
+            })
+            .catch((err) => {
+              setIsloading(false);
+              console.log("error  :---  " + err);
+              Alert.alert(err.message);
+            });
+        });
+    } catch (err) {
+      setIsloading(false);
+      Alert.alert(err.message);
+    }
   };
 
   return (
@@ -64,7 +106,11 @@ const SigninScreen = () => {
               onValidPasswordField={validatePassword}
             />
 
-            <CustomButton title={Strings.Join} isLoading={isLoading} />
+            <CustomButton
+              title={Strings.Join}
+              isLoading={isLoading}
+              onPress={perFromAuth}
+            />
           </SafeAreaView>
         </View>
       </KeyboardAvoidingView>
