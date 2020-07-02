@@ -7,7 +7,7 @@ const Color = {
   smoke: "#eeeeee",
   white: "#f5f5f5",
   logocolor: "#aa96da",
-  textFeild: "#ffcef3",
+  textFeild: "#edb1f1",
 };
 
 export default Color;
