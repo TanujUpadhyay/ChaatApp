@@ -8,6 +8,11 @@ const Strings = {
   GroupEmpty: " Group Name can't be empty !!!",
   CreateGroup: " Create Group ",
   send: " Send ",
+  typeamessage: " Type a message  ",
+  joinchat: " Join ",
+  joinchatconfirm: "Are you sure you want to join this group ? ",
+  joinMessage: " You joind  ",
+  joinGroupError: " unable to join this group ",
 };
 
 export default Strings;

@@ -9,7 +9,16 @@ const GroupItem = ({ item }) => {
     <View>
       <View style={styles.container}>
         <Image source={Images.groups} style={styles.ImageStyle} />
-        <View style={{ justifyContent: "center" }}>
+        <View
+          style={{
+            justifyContent: "center",
+            borderRadius: 50,
+            borderWidth: 1,
+            backgroundColor: Color.gray,
+            width: "70%",
+            marginLeft: 30,
+          }}
+        >
           <Text style={styles.groupItem}> {item.groupName} </Text>
           <Text style={styles.groupMembers}> {item.groupMembers} </Text>
         </View>
@@ -32,8 +41,8 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   ImageStyle: {
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
     borderRadius: 50,
     borderColor: Color.charcoal,
     borderWidth: 1,
@@ -48,13 +57,13 @@ const styles = StyleSheet.create({
   },
   groupItem: {
     color: Color.white,
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: "bold",
-    marginHorizontal: 10,
+    marginHorizontal: 20,
     marginTop: 17,
   },
   groupMembers: {
-    color: Color.smoke,
+    color: Color.white,
     fontSize: 14,
   },
   seprator: {

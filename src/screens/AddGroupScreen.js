@@ -6,6 +6,7 @@ import Colors from "../util/Colors";
 import Strings from "../const/String";
 import Utility from "../util/Utility";
 import firebase, { firestore } from "../firebase/Firebase";
+import Color from "../util/Colors";
 
 const AddGroupScreen = ({ navigation }) => {
   const [groupName, setGroupName] = useState("");
@@ -52,7 +53,7 @@ const AddGroupScreen = ({ navigation }) => {
         userId: userId,
       })
       .then((doRef) => {
-        navigation.goBack();
+        setTimeout(navigation.goBack, 0);
       })
       .catch((er) => {
         setIsloading(false);
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#eeeeee",
+    backgroundColor: Color.theme,
   },
   text: {
     color: "#101010",

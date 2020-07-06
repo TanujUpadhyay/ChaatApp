@@ -1,16 +1,21 @@
 import React from "react";
-import { StyleSheet, View, TextInput, Text, Button } from "react-native";
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  Text,
+  Button,
+  KeyboardAvoidingView,
+} from "react-native";
 import Color from "../util/Colors";
 import Constants from "../const/Constants";
 import Strings from "../const/String";
 
 const MessageView = ({
   term,
-  placeHolder,
   onTermChange,
   onValidateTextField,
   error,
-  placeholderColor,
   onSubmit,
   isJoined,
 }) => {
@@ -20,10 +25,11 @@ const MessageView = ({
         <TextInput
           autoCorrect={false}
           style={styles.textFiled}
-          placeholder={placeHolder}
+          placeholder={Strings.typeamessage}
           onChangeText={onTermChange}
+          value={term}
           onEndEditing={onValidateTextField}
-          placeholderColor={placeholderColor}
+          placeholderTextColor={Color.black}
         />
         <Button
           title={Strings.send}
@@ -38,7 +44,6 @@ const MessageView = ({
 const styles = StyleSheet.create({
   constinerView: {
     flex: 1,
-    justifyContent: "space-between",
     backgroundColor: Color.theme,
     width: Constants.screenWidth,
   },

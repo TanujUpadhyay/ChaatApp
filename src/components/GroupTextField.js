@@ -46,6 +46,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     justifyContent: "center",
     backgroundColor: Colors.smoke,
+    borderRadius: 20,
   },
   ErrorText: {
     fontSize: 12,

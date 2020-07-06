@@ -8,6 +8,7 @@ import AddGroupScreen from "../screens/AddGroupScreen";
 import ChatScreen from "../screens/ChatScreen";
 import GroupScreen from "../screens/GroupScreen";
 import Color from "../util/Colors";
+import SplashScreen from "../screens/SplashScreen";
 
 const Stack = createStackNavigator();
 
@@ -15,7 +16,9 @@ const ChatFlow = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
-        name="chat"
+        name="SplashScreen"
+        component={SplashScreen}
+        options={{ headerShown: false }}
         screenOptions={{
           headerTitleAlign: "center",
           headerStyle: {

@@ -6,6 +6,7 @@ import {
   Image,
   FlatList,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import ButtonWithBackground from "../components/ButtonWithBackground";
 import Images from "../const/Images";
@@ -23,19 +24,36 @@ const GroupScreen = ({ navigation }) => {
           onPress={() => {
             navigation.navigate("Add Group Screen");
           }}
-          image={Images.add}
+          image={" +"}
         />
       ),
       headerLeft: () => (
         <ButtonWithBackground
           onPress={() => {
-            //
+            signOutUser();
           }}
-          image={Images.logout}
+          image={" x "}
         />
       ),
     });
   });
+
+  const signOutUser = async () => {
+    try {
+      await firebase
+        .auth()
+        .signOut()
+        .then(() => {
+          console.log("press");
+        });
+      // navigation.reset({
+      //     index: 0,
+      //     routes: [{name: 'SplashScreen'}]
+      // })
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   useEffect(() => {
     getChats();
@@ -67,18 +85,19 @@ const GroupScreen = ({ navigation }) => {
       <FlatList
         data={group}
         keyExtractor={(item, index) => {
-          "key" + index;
+          return "key" + index.toString();
         }}
-        renderItem={({ item }) => {
+        renderItem={({ item, index }) => {
           return (
             <TouchableOpacity
+              key={item.groupID}
               onPress={() => {
                 navigation.navigate("chat Screen", {
                   item,
                 });
               }}
             >
-              <GroupItem item={item} />
+              <GroupItem item={item} key={index.toString()} />
             </TouchableOpacity>
           );
         }}
