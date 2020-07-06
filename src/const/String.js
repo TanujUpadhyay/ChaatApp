@@ -7,6 +7,7 @@ const Strings = {
   EnterYourGroupName: " Enter your group name ",
   GroupEmpty: " Group Name can't be empty !!!",
   CreateGroup: " Create Group ",
+  send: " Send ",
 };
 
 export default Strings;

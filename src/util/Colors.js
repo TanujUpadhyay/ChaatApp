@@ -8,6 +8,9 @@ const Color = {
   white: "#f5f5f5",
   logocolor: "#aa96da",
   textFeild: "#edb1f1",
+  otherMessage: "#f1c5d9",
+  messageColor: "#6e4c41",
+  senderColor: "#ffbe90",
 };
 
 export default Color;
