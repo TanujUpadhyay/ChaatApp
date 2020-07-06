@@ -20,7 +20,7 @@ import Color from "../util/Colors";
 import firebase from "../firebase/Firebase";
 import { auth } from "firebase";
 
-const SigninScreen = () => {
+const SigninScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState("");
@@ -61,7 +61,11 @@ const SigninScreen = () => {
         .signInWithEmailAndPassword(email, password)
         .then((user) => {
           setIsloading(false);
-          Alert.alert("Logged In");
+          navigation.reset({
+            index: 0,
+            routes: [{ name: "Group Screen" }],
+          });
+          // Alert.alert("Logged In");
         })
         .catch((err) => {
           firebase
@@ -69,11 +73,14 @@ const SigninScreen = () => {
             .createUserWithEmailAndPassword(email, password)
             .then((user) => {
               setIsloading(false);
-              Alert.alert("Create a New Coder");
+              navigation.reset({
+                index: 0,
+                routes: [{ name: "Group Screen" }],
+              });
+              // Alert.alert("Create a New Coder");
             })
             .catch((err) => {
               setIsloading(false);
-              console.log("error  :---  " + err);
               Alert.alert(err.message);
             });
         });

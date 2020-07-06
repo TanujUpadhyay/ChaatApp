@@ -13,7 +13,12 @@ const Stack = createStackNavigator();
 const ChatFlow = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator name="chat">
+      <Stack.Navigator
+        name="chat"
+        screenOptions={{
+          headerTitleAlign: "center",
+        }}
+      >
         <Stack.Screen
           name="SiginScreen"
           component={SigninScreen}

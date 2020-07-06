@@ -1,10 +1,33 @@
-import React from "react";
-import { StyleSheet, View, Text } from "react-native";
+import React, { useLayoutEffect, useState, useEffect } from "react";
+import { StyleSheet, View, Text, Image } from "react-native";
+import ButtonWithBackground from "../components/ButtonWithBackground";
+import Images from "../const/Images";
 
-const GroupScreen = () => {
+const GroupScreen = ({ navigation }) => {
+  useLayoutEffect(() => {
+    navigation.setOptions({
+      headerRight: () => (
+        <ButtonWithBackground
+          onPress={() => {
+            navigation.navigate("Add Group Screen");
+          }}
+          image={Images.add}
+        />
+      ),
+      headerLeft: () => (
+        <ButtonWithBackground
+          onPress={() => {
+            //
+          }}
+          image={Images.logout}
+        />
+      ),
+    });
+  });
+
   return (
     <View style={styles.constiner}>
-      <Text style={styles.text}>Group screen</Text>
+      <Text style={styles.text}>Group screen 3 button</Text>
     </View>
   );
 };
