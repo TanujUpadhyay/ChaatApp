@@ -7,6 +7,7 @@ import SigninScreen from "../screens/SigninScreen";
 import AddGroupScreen from "../screens/AddGroupScreen";
 import ChatScreen from "../screens/ChatScreen";
 import GroupScreen from "../screens/GroupScreen";
+import Color from "../util/Colors";
 
 const Stack = createStackNavigator();
 
@@ -17,6 +18,10 @@ const ChatFlow = () => {
         name="chat"
         screenOptions={{
           headerTitleAlign: "center",
+          headerStyle: {
+            backgroundColor: Color.theme,
+          },
+          headerTintColor: Color.white,
         }}
       >
         <Stack.Screen

@@ -51,6 +51,9 @@ const AddGroupScreen = ({ navigation }) => {
       .set({
         userId: userId,
       })
+      .then((doRef) => {
+        navigation.goBack();
+      })
       .catch((er) => {
         setIsloading(false);
         console.error("Errorr ading document : ", er);
