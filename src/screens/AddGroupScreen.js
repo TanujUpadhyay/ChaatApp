@@ -83,6 +83,7 @@ const AddGroupScreen = ({ navigation }) => {
         onPress={performCreateGroup}
         isLoading={isLoading}
       />
+      <Text style={styles.devby}>Developed by Tanuj Upadhyay</Text>
     </View>
   );
 };
@@ -98,6 +99,12 @@ const styles = StyleSheet.create({
     color: "#101010",
     fontSize: 24,
     fontWeight: "bold",
+  },
+  devby: {
+    color: Color.white,
+    textAlign: "center",
+    marginTop: 50,
+    marginBottom: 50,
   },
 });
 

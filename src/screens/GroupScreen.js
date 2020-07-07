@@ -43,9 +43,7 @@ const GroupScreen = ({ navigation }) => {
       await firebase
         .auth()
         .signOut()
-        .then(() => {
-          console.log("press");
-        });
+        .then(() => {});
       // navigation.reset({
       //     index: 0,
       //     routes: [{name: 'SplashScreen'}]
@@ -102,6 +100,7 @@ const GroupScreen = ({ navigation }) => {
           );
         }}
       />
+      <Text style={styles.devby}>Developed by Tanuj Upadhyay</Text>
     </View>
   );
 };
@@ -112,6 +111,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: Color.theme,
+  },
+  devby: {
+    color: Color.white,
+    textAlign: "center",
+    marginTop: 50,
+    marginBottom: 50,
   },
 });
 

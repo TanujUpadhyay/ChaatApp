@@ -92,35 +92,42 @@ const SigninScreen = ({ navigation }) => {
 
   return (
     <DismissKeyboard>
-      <KeyboardAvoidingView style={styles.constiner} behavior="padding" enabled>
-        <View style={styles.constiner}>
-          <SafeAreaView>
-            <Image style={styles.logo} source={Images.logo} />
+      {/* <KeyboardAvoidingView
+        style={styles.constiner}
+        //
+        behavior="padding"
+        enabled
+      > */}
+      <View style={styles.constiner}>
+        <SafeAreaView>
+          <Image style={styles.logo} source={Images.logo} />
 
-            <EmailTextField
-              term={email}
-              error={emailError}
-              placeHolder={Strings.EmailPlaceHolder}
-              onTermChnage={(newEmail) => setEmail(newEmail)}
-              onValidateEmailAddress={validateEmail}
-            />
+          <EmailTextField
+            term={email}
+            error={emailError}
+            placeHolder={Strings.EmailPlaceHolder}
+            onTermChnage={(newEmail) => setEmail(newEmail)}
+            onValidateEmailAddress={validateEmail}
+          />
 
-            <PasswordTextField
-              term={password}
-              error={PasswordError}
-              placeHolder={Strings.PasswordPlaceHolder}
-              onTermChnage={(newPassword) => setPassword(newPassword)}
-              onValidPasswordField={validatePassword}
-            />
+          <PasswordTextField
+            term={password}
+            error={PasswordError}
+            placeHolder={Strings.PasswordPlaceHolder}
+            onTermChnage={(newPassword) => setPassword(newPassword)}
+            onValidPasswordField={validatePassword}
+          />
 
-            <CustomButton
-              title={Strings.Join}
-              isLoading={isLoading}
-              onPress={perFromAuth}
-            />
-          </SafeAreaView>
-        </View>
-      </KeyboardAvoidingView>
+          <CustomButton
+            title={Strings.Join}
+            isLoading={isLoading}
+            onPress={perFromAuth}
+          />
+
+          <Text style={styles.devby}>Developed by Tanuj Upadhyay</Text>
+        </SafeAreaView>
+      </View>
+      {/* </KeyboardAvoidingView> */}
     </DismissKeyboard>
   );
 };
@@ -138,6 +145,12 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: Color.theme,
+  },
+  devby: {
+    color: Color.white,
+    textAlign: "center",
+    marginTop: 50,
+    marginBottom: 50,
   },
 });
 

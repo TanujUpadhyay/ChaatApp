@@ -142,7 +142,7 @@ const ChatScreen = ({ route, navigation }) => {
         senderEmail: userEmail,
       })
       .then((doRef) => {
-        console.log("Document writter with id : ", messageRef.id);
+        //console.log("Document writter with id : ", messageRef.id);
         setMesaage("");
       })
       .catch((er) => {
